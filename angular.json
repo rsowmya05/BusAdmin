@@ -124,5 +124,8 @@
       }
     }
   },
-  "defaultProject": "BusAdmin"
+  "defaultProject": "BusAdmin",
+  "cli": {
+    "analytics": false
+  }
 }

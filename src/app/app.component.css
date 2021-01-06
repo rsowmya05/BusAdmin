@@ -1,0 +1,17 @@
+ a{
+     text-decoration: none;
+     color: black;
+ }
+ a:hover{
+     padding: 15px;
+     background-color: gainsboro;
+ }
+ .nav-item {
+     padding: 10px;
+ }
+ .footnav{
+    text-align: center;
+    width: 100%;
+    padding: 10px;
+    bottom: 0;
+}

@@ -1,0 +1,94 @@
+<h3 style="text-align: center;">Add Bus Details</h3>
+<!-- <div class="container-fluid text-center">     -->
+<div class="container mt-8 bg-white rounded w-50">    
+  <div class="row content">        
+
+      <div class="Absolute-Center justify-content-center text-left"> 
+          <br>
+          
+          <form [formGroup]="myForm" style="align-content: center; width: 350px;justify-content: center;" class="form-group col-xs-2">
+              <label >Bus name</label>
+              <input formControlName="busname" type="text" class="form-control" size="50" name="name" id="name" placeholder="Enter the Bus Name">
+              <span *ngIf="!busname.valid">
+                <span *ngIf="busname.errors && busname.errors.required">
+                    This field is required
+                </span>
+              </span>
+
+              <label>Total no of Seats Available</label>
+              <input formControlName="seats" type="number" class="form-control" name="seat" id="seat" placeholder="Enter the number of seats available">
+              <span *ngIf=" !seats.valid">
+                <span *ngIf="seats.errors && seats.errors.required">
+                    This field is required
+                </span>
+              </span>
+
+              <label>Boarding Point</label>
+              <input type="text" class="form-control" name="boardingPt" id="boardingPt" placeholder="Enter the boarding point">
+              <span *ngIf="!boardingPoint.valid">
+                <span *ngIf="boardingPoint.errors && boardingPoint.errors.required">
+                    This field is required
+                </span>
+              </span>
+
+              <label>Destination Point</label>
+              <input type="text" class="form-control" name="destPt" id="destPt" placeholder="Enter the destination point">
+              <span *ngIf="!destPoint.valid">
+                <span *ngIf="destPoint.errors && destPoint.errors.required">
+                    This field is required
+                </span>
+              </span>
+
+              <label>Stops</label>
+              <select class="form-control" name="stop" id="stop">
+                  
+              </select>
+              
+              <label>Arrival</label>
+              <input type="time" class="form-control" name="arrival" id="arrival">
+              <span *ngIf="!arrival.valid">
+                <span *ngIf="arrival.errors && arrival.errors.required">
+                    This field is required
+                </span>
+              </span>
+              
+              <label>Departure</label>
+              <input type="time" class="form-control" name="dept" id="dept">
+              <span *ngIf="!dept.valid">
+                <span *ngIf="dept.errors && dept.errors.required">
+                    This field is required
+                </span>
+              </span>
+
+              <label>Travel Duration</label>
+              <input type="text" class="form-control" name="duration" id="duration">
+              <span *ngIf="!duration.valid">
+                <span *ngIf="duration.errors && duration.errors.required">
+                    This field is required
+                </span>
+              </span>
+
+              <label>Date of Travel</label>
+              <input type="date" class="form-control" name="date" id="date">
+              <span *ngIf="!date.valid">
+                <span *ngIf="date.errors && date.errors.required">
+                    This field is required
+                </span>
+              </span>
+
+              <label>Fare (per seat)</label>
+              <input type="text" class="form-control" name="fare" id="fare" placeholder="Enter the fare per seat">
+              <span *ngIf=" !fare.valid">
+                <span *ngIf="fare.errors && fare.errors.required">
+                    This field is required
+                </span>
+              </span>
+              
+              <br>
+              <!-- <button class="form-control btn btn-secondary">Add Bus</button> -->
+              <input type="submit">
+          </form>
+      </div>      
+  </div>
+</div>
+
