@@ -1,0 +1,18 @@
+table, th, td 
+{
+    border: 1px solid brown;
+
+    
+}  
+th, td 
+{
+    padding: 20px;
+    text-align: left;
+    
+}
+td {
+    border: none;
+}
+th{
+    border: none;
+}

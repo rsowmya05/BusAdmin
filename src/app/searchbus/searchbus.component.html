@@ -1,0 +1,54 @@
+<br>
+<h3 style="text-align: center;">Search</h3>
+
+<div class="card m-3">
+    
+    <div class="card-body">
+        <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+
+                      
+
+            <div class="form-row">
+                <div class="form-group col">
+                    <label>Boarding Point</label>
+                    <select type="text" formControlName="boardingPoint" name="boardingPt" id="boardingPt" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.boardingPoint.errors }" ></select>
+                    <div *ngIf="submitted && f.boardingPoint.errors" class="invalid-feedback">
+                        <div *ngIf="f.boardingPoint.errors.required">Boarding Point is required</div>                    
+                    </div>
+                </div>
+                <div class="form-group col">
+                    <label>Destination Point</label>
+                    <select type="text" formControlName="destPoint" name="destPt" id="destPt" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.destPoint.errors }" ></select>
+                    <div *ngIf="submitted && f.destPoint.errors" class="invalid-feedback">
+                        <div *ngIf="f.destPoint.errors.required">Destination Point is required</div>                    
+                    </div>
+                </div>              
+            </div>
+
+            <!-- <div class="form-row">
+                <div class="form-group col">
+                    <label>Boarding Point</label>
+                    <select type="text" name="boardingPt" id="boardingPt" class="form-control"  ></select>
+                    <div *ngIf="submitted && f.boardingPoint.errors" class="invalid-feedback">
+                        <div *ngIf="f.boardingPoint.errors.required">Boarding Point is required</div>                    
+                    </div>
+                </div>
+                <div class="form-group col">
+                    <label>Destination Point</label>
+                    <select type="text" name="destPt" id="destPt" class="form-control" ></select>
+                    <div *ngIf="submitted && f.destPoint.errors" class="invalid-feedback">
+                        <div *ngIf="f.destPoint.errors.required">Destination Point is required</div>                    
+                    </div>
+                </div>              
+            </div> -->
+           
+            <div class="text-center">
+                <button class="btn btn-primary mr-1">
+                    <a style="color: white;text-decoration: none;" href="#" routerLink="viewbus">View Buses</a>                   
+                </button>
+                
+            </div>
+        </form>
+    </div>
+</div>
+
