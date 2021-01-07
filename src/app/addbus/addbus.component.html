@@ -1,94 +1,106 @@
-<h3 style="text-align: center;">Add Bus Details</h3>
-<!-- <div class="container-fluid text-center">     -->
-<div class="container mt-8 bg-white rounded w-50">    
-  <div class="row content">        
+<h3 style="text-align: center;">Add bus Details</h3>
 
-      <div class="Absolute-Center justify-content-center text-left"> 
-          <br>
-          
-          <form [formGroup]="myForm" style="align-content: center; width: 350px;justify-content: center;" class="form-group col-xs-2">
-              <label >Bus name</label>
-              <input formControlName="busname" type="text" class="form-control" size="50" name="name" id="name" placeholder="Enter the Bus Name">
-              <span *ngIf="!busname.valid">
-                <span *ngIf="busname.errors && busname.errors.required">
-                    This field is required
-                </span>
-              </span>
-
-              <label>Total no of Seats Available</label>
-              <input formControlName="seats" type="number" class="form-control" name="seat" id="seat" placeholder="Enter the number of seats available">
-              <span *ngIf=" !seats.valid">
-                <span *ngIf="seats.errors && seats.errors.required">
-                    This field is required
-                </span>
-              </span>
-
-              <label>Boarding Point</label>
-              <input type="text" class="form-control" name="boardingPt" id="boardingPt" placeholder="Enter the boarding point">
-              <span *ngIf="!boardingPoint.valid">
-                <span *ngIf="boardingPoint.errors && boardingPoint.errors.required">
-                    This field is required
-                </span>
-              </span>
-
-              <label>Destination Point</label>
-              <input type="text" class="form-control" name="destPt" id="destPt" placeholder="Enter the destination point">
-              <span *ngIf="!destPoint.valid">
-                <span *ngIf="destPoint.errors && destPoint.errors.required">
-                    This field is required
-                </span>
-              </span>
-
-              <label>Stops</label>
-              <select class="form-control" name="stop" id="stop">
-                  
-              </select>
+<div class="card m-3">
+    
+    <div class="card-body">
+        <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+            <div class="form-row">
+                
+                <div class="form-group col-5">
+                    <label>Bus Name</label>
+                    <input type="text" formControlName="busname" name="name" id="name" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.busname.errors }" />
+                    <div *ngIf="submitted && f.busname.errors" class="invalid-feedback">
+                        <div *ngIf="f.busname.errors.required">Bus Name is required</div>
+                        <div *ngIf="f.busname.errors.pattern">Should have 1 uppercase, 1 lowercase , 1 number</div>
+                        <div *ngIf="f.busname.errors.minlength">Must be at least 6 characters</div>
+                    </div>
+                </div>
+                
+                
+            </div>
+            <div class="form-row">       
               
-              <label>Arrival</label>
-              <input type="time" class="form-control" name="arrival" id="arrival">
-              <span *ngIf="!arrival.valid">
-                <span *ngIf="arrival.errors && arrival.errors.required">
-                    This field is required
-                </span>
-              </span>
+              <div class="form-group col-5">
+                <label>No of Seats</label>
+                <input type="number" formControlName="seats" name="seat" id="seat" min="0" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.seats.errors }" />
+                <div *ngIf="submitted && f.seats.errors" class="invalid-feedback">
+                    <div *ngIf="f.seats.errors.required">No of Seats is required</div>
+                    <div *ngIf="f.seats.errors?.min">Invalid Data</div>
+                </div>
+              </div>
               
-              <label>Departure</label>
-              <input type="time" class="form-control" name="dept" id="dept">
-              <span *ngIf="!dept.valid">
-                <span *ngIf="dept.errors && dept.errors.required">
-                    This field is required
-                </span>
-              </span>
+          </div>           
+           
 
-              <label>Travel Duration</label>
-              <input type="text" class="form-control" name="duration" id="duration">
-              <span *ngIf="!duration.valid">
-                <span *ngIf="duration.errors && duration.errors.required">
-                    This field is required
-                </span>
-              </span>
+            <div class="form-row">
+              <div class="form-group col">
+                <label>Boarding Point</label>
+                <select type="text" formControlName="boardingPoint" name="boardingPt" id="boardingPt" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.boardingPoint.errors }" ></select>
+                <div *ngIf="submitted && f.boardingPoint.errors" class="invalid-feedback">
+                    <div *ngIf="f.boardingPoint.errors.required">Boarding Point is required</div>                    
+                </div>
+            </div>
+            <div class="form-group col">
+                <label>Destination Point</label>
+                <select type="text" formControlName="destPoint" name="destPt" id="destPt" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.destPoint.errors }" ></select>
+                <div *ngIf="submitted && f.destPoint.errors" class="invalid-feedback">
+                    <div *ngIf="f.destPoint.errors.required">Destination Point is required</div>                    
+                </div>
+            </div>
 
-              <label>Date of Travel</label>
-              <input type="date" class="form-control" name="date" id="date">
-              <span *ngIf="!date.valid">
-                <span *ngIf="date.errors && date.errors.required">
-                    This field is required
-                </span>
-              </span>
-
-              <label>Fare (per seat)</label>
-              <input type="text" class="form-control" name="fare" id="fare" placeholder="Enter the fare per seat">
-              <span *ngIf=" !fare.valid">
-                <span *ngIf="fare.errors && fare.errors.required">
-                    This field is required
-                </span>
-              </span>
               
-              <br>
-              <!-- <button class="form-control btn btn-secondary">Add Bus</button> -->
-              <input type="submit">
-          </form>
-      </div>      
-  </div>
+            </div>
+
+            <div class="form-row">                
+                <div class="form-group col">
+                    <label>Arrival</label>
+                    <input type="date" formControlName="arrival" name="arrival" id="arrival" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.arrival.errors }" />
+                    <div *ngIf="submitted && f.arrival.errors" class="invalid-feedback">
+                        <div *ngIf="f.arrival.errors.required">Arrival is required</div>                        
+                    </div>
+                </div>
+
+                <div class="form-group col">
+                    <label>Departure</label>
+                    <input type="date" formControlName="dept" name="dept" id="dept" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.dept.errors }" />
+                    <div *ngIf="submitted && f.dept.errors" class="invalid-feedback">
+                        <div *ngIf="f.dept.errors.required">Departure is required</div>                        
+                    </div>
+                </div>
+
+                <div class="form-group col">
+                    <label>Duration</label>
+                    <input type="number" formControlName="duration" name="duration" id="duration" min="0" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.duration.errors }" />
+                    <div *ngIf="submitted && f.duration.errors" class="invalid-feedback">
+                        <div *ngIf="f.duration.errors.required">Duration is required</div>  
+                        <div *ngIf="f.duration.errors?.min">Invalid Duration</div>                        
+                                          
+                    </div>
+                </div>
+
+                <div class="form-group col">
+                    <label>Fare</label>
+                    <input type="number" formControlName="fare" name="fare" id="fare" min="100" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.fare.errors }" />
+                    <div *ngIf="submitted && f.fare.errors" class="invalid-feedback">
+                        <div *ngIf="f.fare.errors.required">Fare is required</div>   
+                        <div *ngIf="f.fare.errors?.min">Minimum fare should be 100</div>                      
+                    </div>
+                </div>
+
+                <div class="form-group col">
+                    <label>Date</label>
+                    <input type="date" formControlName="date" name="date" id="date" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.date.errors }" />
+                    <div *ngIf="submitted && f.date.errors" class="invalid-feedback">
+                        <div *ngIf="f.date.errors.required">Date of travel is required</div>                        
+                    </div>
+                </div>
+            </div>
+           
+            <div class="text-center">
+                <button class="btn btn-primary mr-1">Add</button>
+                
+            </div>
+        </form>
+    </div>
 </div>
 

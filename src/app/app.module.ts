@@ -11,6 +11,7 @@ import { FormsModule } from '@angular/forms';
 import { RouterModule,Routes } from '@angular/router';
 import {HttpClientModule} from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 
 var myRoutes:Routes=[
   {path:'add',component:AddbusComponent},
@@ -32,7 +33,8 @@ var myRoutes:Routes=[
     FormsModule,
     RouterModule.forRoot(myRoutes),
     // HttpClientModule,   
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    CommonModule
   ],
   providers: [],
   bootstrap: [AppComponent]
